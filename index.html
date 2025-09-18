@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MİKAİL ALEYNA 💖</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at top, #ff99cc, #ff1a66, #660033);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      margin: 0;
+      color: #ff4da6;
+      text-shadow: 0 0 10px #ff4da6, 0 0 20px #ff80bf, 0 0 40px #ff1a75;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #ff4da6, 0 0 10px #ff80bf, 0 0 20px #ff1a75; }
+      to   { text-shadow: 0 0 20px #ff1a75, 0 0 40px #ff66b3, 0 0 60px #ff3399; }
+    }
+
+    .date {
+      margin-top: 15px;
+      font-size: 1.8rem;
+      color: #ffb3d9;
+      text-shadow: 0 0 10px #ff80bf, 0 0 20px #ff4da6;
+    }
+
+    .days {
+      margin-top: 10px;
+      font-size: 1.4rem;
+      color: #ffe6f2;
+      text-shadow: 0 0 5px #ff4da6, 0 0 15px #ff1a75;
+    }
+
+    button {
+      margin-top: 25px;
+      background: #ff1a75;
+      color: white;
+      border: none;
+      padding: 15px 35px;
+      font-size: 1.3rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: bold;
+      box-shadow: 0 0 20px #ff3399, 0 0 40px #ff1a75;
+    }
+
+    button:hover {
+      background: #ff66b3;
+      transform: scale(1.1);
+      box-shadow: 0 0 30px #ff80bf, 0 0 60px #ff1a75;
+    }
+
+    /* Kalp animasyonu */
+    .heart {
+      position: absolute;
+      top: -50px;
+      font-size: 3rem;
+      animation: fall linear forwards;
+      opacity: 0.8;
+      text-shadow: 0 0 10px #ff4da6, 0 0 20px #ff1a75;
+    }
+
+    @keyframes fall {
+      0%   { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Aşk Sayacı 💕</h1>
+  <div class="date">07.12.2025</div>
+  <div class="days">Geçen gün: <span id="daysPassed">0</span></div>
+  <button onclick="playMusic()">🎵 Müzik Aç</button>
+
+  <script>
+    // Gün sayısı hesaplama
+    function calculateDays() {
+      const startDate = new Date("2025-12-07");
+      const today = new Date();
+      const diffTime = today - startDate;
+      const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+      document.getElementById("daysPassed").innerText = diffDays;
+    }
+    calculateDays();
+    setInterval(calculateDays, 86400000);
+
+    // Kalpler üretme
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerText = "❤️‍🩹";
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.fontSize = (Math.random() * 40 + 30) + "px";
+      heart.style.animationDuration = (Math.random() * 5 + 5) + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 10000);
+    }
+    setInterval(createHeart, 600);
+
+    // Müzik butonu (şimdilik boş)
+    function playMusic() {
+      alert("Buraya müzik eklenecek 🎶");
+    }
+  </script>
+</body>
+</html>
