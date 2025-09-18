@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MİKAİL ALEYNA 💖</title>
+  <title>Aşk Sayacı 💖</title>
   <style>
     body {
       margin: 0;
@@ -14,37 +14,32 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: radial-gradient(circle at top, #ff99cc, #ff1a66, #660033);
+      background: radial-gradient(circle at top, #ff66b2, #cc0066, #660033);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #fff;
       text-align: center;
     }
 
     h1 {
-      font-size: 3.5rem;
+      font-size: 3rem;
       margin: 0;
-      color: #ff4da6;
-      text-shadow: 0 0 10px #ff4da6, 0 0 20px #ff80bf, 0 0 40px #ff1a75;
-      animation: glow 2s ease-in-out infinite alternate;
-    }
-
-    @keyframes glow {
-      from { text-shadow: 0 0 5px #ff4da6, 0 0 10px #ff80bf, 0 0 20px #ff1a75; }
-      to   { text-shadow: 0 0 20px #ff1a75, 0 0 40px #ff66b3, 0 0 60px #ff3399; }
+      color: white;
+      text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff4da6;
     }
 
     .date {
-      margin-top: 15px;
-      font-size: 1.8rem;
-      color: #ffb3d9;
-      text-shadow: 0 0 10px #ff80bf, 0 0 20px #ff4da6;
+      margin-top: 10px;
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: white;
+      text-shadow: 0 0 10px #ff99cc;
     }
 
     .days {
-      margin-top: 10px;
+      margin-top: 15px;
       font-size: 1.4rem;
-      color: #ffe6f2;
-      text-shadow: 0 0 5px #ff4da6, 0 0 15px #ff1a75;
+      color: white;
+      text-shadow: 0 0 10px #ff66b2;
     }
 
     button {
@@ -73,7 +68,7 @@
       top: -50px;
       font-size: 3rem;
       animation: fall linear forwards;
-      opacity: 0.8;
+      opacity: 0.9;
       text-shadow: 0 0 10px #ff4da6, 0 0 20px #ff1a75;
     }
 
@@ -84,22 +79,22 @@
   </style>
 </head>
 <body>
-  <h1>Aşk Sayacı 💕</h1>
-  <div class="date">07.12.2025</div>
-  <div class="days">Geçen gün: <span id="daysPassed">0</span></div>
+  <h1>Aleyna 💝 Mikail</h1>
+  <div class="date">12.07.2025</div>
+  <div class="days">Birlikte geçen gün: <span id="daysPassed">0</span></div>
   <button onclick="playMusic()">🎵 Müzik Aç</button>
 
   <script>
-    // Gün sayısı hesaplama
+    // Gün sayısı hesaplama (12 Temmuz 2025'ten itibaren)
     function calculateDays() {
-      const startDate = new Date("2025-12-07");
+      const startDate = new Date("2025-07-12");
       const today = new Date();
       const diffTime = today - startDate;
       const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-      document.getElementById("daysPassed").innerText = diffDays;
+      document.getElementById("daysPassed").innerText = diffDays >= 0 ? diffDays : 0;
     }
     calculateDays();
-    setInterval(calculateDays, 86400000);
+    setInterval(calculateDays, 1000 * 60 * 60); // her saat güncelle
 
     // Kalpler üretme
     function createHeart() {
