@@ -35,9 +35,9 @@
       text-shadow: 0 0 10px #ff99cc;
     }
 
-    .days {
+    .timer {
       margin-top: 15px;
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       color: white;
       text-shadow: 0 0 10px #ff66b2;
     }
@@ -62,7 +62,6 @@
       box-shadow: 0 0 30px #ff80bf, 0 0 60px #ff1a75;
     }
 
-    /* Kalp animasyonu */
     .heart {
       position: absolute;
       top: -50px;
@@ -80,41 +79,59 @@
 </head>
 <body>
   <h1>Aleyna 💝 Mikail</h1>
-  <div class="date">12.07.2025</div>
-  <div class="days">Birlikte geçen gün: <span id="daysPassed">0</span></div>
-  <button onclick="playMusic()">🎵 Müzik Aç</button>
+  <div class="date">Başlangıç Tarihi: 12.07.2025</div>
+  <div class="timer">
+    Geçen Süre: <span id="daysPassed">0</span> gün
+    <span id="hoursPassed">0</span> saat
+    <span id="minutesPassed">0</span> dakika
+    <span id="secondsPassed">0</span> saniye
+  </div>
+  <button onclick="playMusic()">🎵 Müziği Aç</button>
+
+  <audio id="loveSong" src="mikail.mp3" loop></audio>
 
   <script>
-    // Gün sayısı hesaplama (12 Temmuz 2025'ten itibaren)
-    function calculateDays() {
-      const startDate = new Date("2025-07-12");
-      const today = new Date();
-      const diffTime = today - startDate;
-      const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-      document.getElementById("daysPassed").innerText = diffDays >= 0 ? diffDays : 0;
-    }
-    calculateDays();
-    setInterval(calculateDays, 1000 * 60 * 60); // her saat güncelle
+    const startDate = new Date("2025-07-12T00:00:00");
 
-    // Kalpler üretme
+    function updateTimer() {
+      const now = new Date();
+      let diff = now - startDate;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      diff -= days * (1000 * 60 * 60 * 24);
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      diff -= hours * (1000 * 60 * 60);
+      const minutes = Math.floor(diff / (1000 * 60));
+      diff -= minutes * (1000 * 60);
+      const seconds = Math.floor(diff / 1000);
+
+      document.getElementById("daysPassed").innerText = days;
+      document.getElementById("hoursPassed").innerText = hours;
+      document.getElementById("minutesPassed").innerText = minutes;
+      document.getElementById("secondsPassed").innerText = seconds;
+    }
+
+    setInterval(updateTimer, 1000);
+    updateTimer();
+
+    // Kalp animasyonu
     function createHeart() {
       const heart = document.createElement("div");
       heart.classList.add("heart");
-      heart.innerText = "❤️‍🩹";
+      const hearts = ["❤️‍🩹", "💖", "💘", "💕"];
+      heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
       heart.style.left = Math.random() * window.innerWidth + "px";
       heart.style.fontSize = (Math.random() * 40 + 30) + "px";
       heart.style.animationDuration = (Math.random() * 5 + 5) + "s";
       document.body.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 10000);
+      setTimeout(() => heart.remove(), 10000);
     }
     setInterval(createHeart, 600);
 
-    // Müzik butonu (şimdilik boş)
+    // Müzik çalma
     function playMusic() {
-      alert("Buraya müzik eklenecek 🎶");
+      const song = document.getElementById("loveSong");
+      song.play();
     }
   </script>
 </body>
